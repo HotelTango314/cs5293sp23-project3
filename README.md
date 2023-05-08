@@ -18,6 +18,8 @@ TO RUN FROM THE ROOT DIRECTORY USE THE FOLLOWING
 pipenv run python project3.py --document testcity.pdf
 ```
 
+NOTE: I DEVELOPED AND RAN THIS USING CLUSTER SIZE e2-standard-8
+
 --document is the only implemented flag. A sample pdf file is saved in the root directory for use in testing functionality of the file (testcity.pdf)
 
 Visit this link for a video example of how to run:
