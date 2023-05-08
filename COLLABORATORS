@@ -1,0 +1,12 @@
+SKLEARN | https://scikit-learn.org/stable/model_persistence.html | learned about using model persistence
+PYTHON DOCS | https://docs.python.org/3/library/pickle.html#examples | LEARNED ABOUT USING PICKLE
+SKLEARN | https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline | LEARNED ABOUT HOW TO EXTRACT RESULTS OF CERTAIN ELEMENTS OF PIPELINE USING NAMED_STEPS ATTRIBUTE
+SKLEARN | https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html | LEARNED ABOUT IMPLEMENTING AGGLOMERATIVE CLUSTERING ALGORITHM
+PANDAS DOCS | https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html?highlight=concat#pandas.concat | HOW TO ADD ROWS TO A PANDAS DF
+PANDAS DOCS | https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_table.html | HOW TO READ A FILE IN AS A PANDAS DF
+TEXT ANALYTICS WITH PYTHON D.SARKAR REPOSITORY | https://github.com/dipanjanS/text-analytics-with-python/blob/master/New-Second-Edition/Ch06%20-%20Text%20Summarization%20and%20Topic%20Models/Ch06c%20-%20Topic%20Modeling%20with%20scikit-learn.ipynb | THIS LINK WAS PROVIDED BY THE INSTRUCTOR TO BE USED TO HELP WITH IDENTIFYING KEY TOPICS IN EACH CLUSTER AND I BORROWED HEAVILY FROM THIS CODE PROVIDED BY THE INSTRUCTOR
+TEXT ANALYTICS WITH PYTHON D.SARKAR REPOSITORY | https://github.com/dipanjanS/text-analytics-with-python/blob/master/New-Second-Edition/Ch05%20-%20Text%20Classification/text_normalizer.py | BORROWED FROM THIS CODE HEAVILY RECOMMENDED BY THE INSTRUCTOR TO CLEAN THE RAW PDF EXTRACTED TEXT
+
+I ALSO CONSULTED THE FIRST 3 PROJECTS FOR REMINDERS ON HOW TO WORK WITH PDFREADER, CLUSTERING, ETC....
+
+

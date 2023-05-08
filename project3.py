@@ -5,7 +5,7 @@ import pathlib
 import argparse
 import pandas as pd
 import nltk
-nltk.download('stopwords')
+nltk.download('stopwords',quiet=True)
 from nltk.corpus import words
 import spacy
 import en_core_web_md
@@ -20,7 +20,9 @@ from bs4 import BeautifulSoup
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import Normalizer
 from sklearn.decomposition import TruncatedSVD
-from sklearn.feature_extraction import CountVectorizer
+#from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.cluster import AgglomerativeClustering
 import pickle
 
 
@@ -262,7 +264,28 @@ def normalize_corpus(doc):
     return doc
 
 def predict_text(doc):
-    lsa = make_pipeline(CountVectorizer
+    with open('vectorizer.pkl','rb') as f:
+        lsa = pickle.load(f)
+    X_lsa=lsa.transform(doc)
+    with open('model.pkl','rb') as g:
+        agg = pickle.load(g)
+    return agg.fit_predict(X_lsa)
+
+def output(row,filename):
+    filename = filename
+    
+    df = pd.DataFrame(data = [row], columns = ['cityname','raw_text','clean_text','clusterid'])
+    
+    if os.path.isfile(filename):
+        #print('existing file found')
+        df_orig = pd.read_table(filename,header=0,names=df.columns)
+        df_new = pd.concat([df_orig, df],ignore_index = True)
+    else:
+        df_new = df
+
+    df_new.to_csv(filename,sep='\t')
+    
+    return f"[{row[0]}] clusterid: {row[3]}"
 
 
 if __name__ == '__main__':
@@ -273,18 +296,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     
     raw_text,cityname = process_pdf(args.document)
-    #print(raw_text)
+    
+    #print(type(raw_text))
+
     clean_text = normalize_corpus(raw_text)
-    #print(clean_text)
-    lsa = load #NEXT STEP: LOAD PICKLE FOR VECTORIZER TO VECTORIZE NEW DATA
 
-
-    #df = pd.DataFrame([cityname, raw_text, clean_text],columns=['city','raw_text','clean_text'])
-    #print(df.head())
-    
-
-    
-
-
-
-
+    predicted_cluster = predict_text(list(clean_text))
+    row = [cityname, raw_text[0:10]+'...',clean_text[0:10]+'...',predicted_cluster[0]]
+    print(output(row,'smartcity_predict.tsv'))
